@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Detalles del Producto</title>
+    <link href="{% static 'productos/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="{% url 'Principal' %}">Volver abarrotes</a>
+        </div>
+    </nav>
+
+    <!-- Detalles del Producto -->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <!-- Imagen del Producto -->
+                <div class="col-md-6">
+                    {% if abarrote.imagen_abarrotes %}
+                        <img class="card-img-top mb-5 mb-md-0" src="{{ abarrote.imagen_abarrotes.url }}" alt="{{ abarrote.nombre_producto }}" />
+                    {% else %}
+                        <img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="Imagen no disponible" />
+                    {% endif %}
+                </div>
+                <!-- Detalles -->
+                <div class="col-md-6">
+                    <h1 class="display-5 fw-bolder">{{ abarrote.nombre_producto }}</h1>
+                    <div class="fs-5 mb-5">
+                        <span>${{ abarrote.precio_producto }}</span>
+                    </div>
+                    <p class="lead">{{ abarrote.descripcion_producto|default:"Sin descripción disponible." }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Mi tienda 2025</p></div>
+    </footer>
+</body>
+</html>
